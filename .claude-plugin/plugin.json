@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A spec, ticket, start, ship workflow for Claude Code, backed by your own Notion databases.",
   "author": { "name": "matthewmattson" },
+  "homepage": "https://github.com/matthewmattson/ticket-flow",
+  "repository": "https://github.com/matthewmattson/ticket-flow",
   "license": "MIT",
   "keywords": ["notion", "tickets", "workflow", "spec", "pull-request"]
 }

@@ -93,6 +93,19 @@ Setup creates these for you, or checks an existing database against them.
 - Nothing is merged, and no code is edited after planning, without your explicit yes.
 - Only `/ticket-flow:ship` sets a ticket to Done.
 
+## What the plugin runs and sends
+
+The plugin is five Markdown skill files. It contains no scripts, hooks, binaries or bundled MCP servers, and it sends nothing to its author or to any third party.
+
+When you run a command, Claude acts with your own tools and sign-ins:
+
+- **Notion**, through the Notion MCP server you connected: searches, reads, creates and updates pages in the databases named in `.claude/ticket-flow.json`. Ticket and spec text you approve is written to your workspace.
+- **git**, in your repo: status, log, diff, branch, commit, and push when you ship.
+- **GitHub CLI** (`gh`): views, creates and, only on your explicit yes, merges pull requests.
+- **Your test command**, as set in the config file.
+
+The only file it writes outside your normal code changes is `.claude/ticket-flow.json`.
+
 ## Customising
 
 The skills are plain Markdown in `skills/<name>/SKILL.md`. Fork the repo and edit the interview topics, ticket template or review checklist to suit your stack.
