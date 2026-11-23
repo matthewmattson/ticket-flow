@@ -7,6 +7,7 @@
   "repository": "https://github.com/matthewmattson/ticket-flow",
   "documentationUrl": "https://github.com/matthewmattson/ticket-flow#readme",
   "supportUrl": "https://github.com/matthewmattson/ticket-flow/issues",
+  "privacyPolicyUrl": "https://github.com/matthewmattson/ticket-flow/blob/main/PRIVACY.md",
   "license": "MIT",
   "keywords": ["notion", "tickets", "workflow", "spec", "pull-request"]
 }

@@ -106,6 +106,8 @@ When you run a command, Claude acts with your own tools and sign-ins:
 
 The only file it writes outside your normal code changes is `.claude/ticket-flow.json`.
 
+See the [privacy policy](PRIVACY.md) for details.
+
 ## Customising
 
 The skills are plain Markdown in `skills/<name>/SKILL.md`. Fork the repo and edit the interview topics, ticket template or review checklist to suit your stack.
