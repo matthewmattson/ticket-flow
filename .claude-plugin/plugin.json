@@ -5,6 +5,8 @@
   "author": { "name": "matthewmattson" },
   "homepage": "https://github.com/matthewmattson/ticket-flow",
   "repository": "https://github.com/matthewmattson/ticket-flow",
+  "documentationUrl": "https://github.com/matthewmattson/ticket-flow#readme",
+  "supportUrl": "https://github.com/matthewmattson/ticket-flow/issues",
   "license": "MIT",
   "keywords": ["notion", "tickets", "workflow", "spec", "pull-request"]
 }
