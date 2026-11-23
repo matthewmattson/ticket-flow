@@ -32,13 +32,14 @@ Read `.claude/ticket-flow.json` at the project root. If it is missing, tell the 
    - PR state OPEN: report its URL and go to step 8.
 4. **Preconditions.** If there are uncommitted changes, show them and ask whether to commit them as `<PREFIX>-<n>: ...`. Run `testCommand` (or the test command in the rules file). If anything fails, stop and report; do not ship red.
 5. **Independent review.** Start a subagent that has not seen this session. Give it only:
-   - the ticket's Goal, Scope and Done when sections
+   - the ticket's Goal, Scope and Done when sections, and its Changes section if it has one
    - the output of `git diff <base>...HEAD`
    - the path to the rules file
 
    Instruct it to stay read-only, skip style, and return a short list split into **Blocking** and **Non-blocking**, checking:
    - each Done when line: met, with the evidence in the diff or tests, or not met
    - changes outside Scope
+   - amendments in the Changes section: each has a reason, and none simply loosens a Done when line to match what was built. An amendment with no reason is Blocking.
    - rules file breaks (size limits, layering, conventions)
    - missing tests for new logic or for the bug fix
    - risky changes: schema or data migrations, permissions, anything that could lose user data
@@ -50,6 +51,7 @@ Read `.claude/ticket-flow.json` at the project root. If it is missing, tell the 
      - `Fixes <PREFIX>-<n>` and the Notion ticket link
      - 2-4 bullets on what changed
      - the Done when checklist with results
+     - Changes to the ticket made during the build, if any, with their reasons
      - Verification: the exact commands run and their results; screenshot paths
      - Follow-ups: tickets created or suggested
    - Put the PR URL in the ticket's `PR` property. Status stays In progress.

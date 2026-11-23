@@ -22,6 +22,13 @@ idea ──/spec──▶ spec + tickets ──/start──▶ branch + code ─
 
 Each ticket is written so a fresh session can implement it with no memory of the conversation that created it: a goal, where to start, what is in and out of scope, and up to five "Done when" checks.
 
+## When a ticket drifts mid-build
+
+Two kinds of drift, handled differently:
+
+- **New work creeping in** becomes its own ticket with `/ticket-flow:ticket` and waits its turn. The `/ticket-flow:ship` review flags any change outside the ticket's Scope.
+- **The ticket itself turning out wrong** triggers a drift check in `/ticket-flow:start`. Claude stops coding and proposes one of three outcomes: amend the ticket, split it, or stop and send it back to spec. Every amendment needs your yes and is logged with its reason under a Changes heading on the ticket, and the ship review reads that log, so a check is never quietly loosened to match what got built.
+
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code) (CLI or desktop app)

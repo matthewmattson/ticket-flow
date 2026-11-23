@@ -1,6 +1,6 @@
 {
   "name": "ticket-flow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A spec, ticket, start, ship workflow for Claude Code, backed by your own Notion databases.",
   "author": { "name": "matthewmattson" },
   "homepage": "https://github.com/matthewmattson/ticket-flow",

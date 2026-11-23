@@ -47,5 +47,29 @@ Read `.claude/ticket-flow.json` at the project root. If it is missing, tell the 
    - Feature: add tests for new logic as you go.
    - Commit in small steps with messages starting `<PREFIX>-<n>: `, unless the rules file sets a different commit format; then follow it and put the ticket ID in the message.
    - Stay inside Scope. Anything new you notice is a separate ticket: tell the user and suggest `/ticket-flow:ticket`. Do not build it.
+   - If the ticket itself turns out to be wrong, run the Drift check below before writing more code.
 11. **Verify.** Run the ticket's Verify steps and `testCommand` (or the test command in the rules file). For UI changes, run the app if you can and check the changed screens, including any themes and text sizes the project supports. Fix and re-run until everything passes.
-12. **Hand off.** Report each Done when line as met or not met, with the evidence (command output, screenshot path). End with: "Ready for /ticket-flow:ship." Do not push, open a PR, or mark the ticket Done.
+12. **Hand off.** Report each Done when line as met or not met, with the evidence (command output, screenshot path). List any amendments made under the Drift check. End with: "Ready for /ticket-flow:ship." Do not push, open a PR, or mark the ticket Done.
+
+## Drift check
+
+The ticket and the code must never disagree: the `/ticket-flow:ship` review sees only the ticket and the diff. New work you notice is a separate ticket (step 10). This check is for the other kind of drift, where the ticket itself is wrong.
+
+**Stop writing code** as soon as any of these is true:
+
+- a Done when line cannot be met as written
+- something the Goal, Scope or Context assumed is false (an API does not exist, the data is shaped differently, a dependency behaves otherwise)
+- the work will clearly exceed one session
+- the user changes what they want
+
+Commit or stash what you have. Tell the user what you found, with the evidence, and propose one of these. Wait for their choice.
+
+1. **Amend.** The Goal still holds, but Scope or Done when must change. Show the lines before and after. On a yes, update the ticket in Notion and add a line under a `## Changes` heading at the end of the ticket: `- <date>: <what changed>. Why: <reason>.` Then continue the build against the amended ticket.
+2. **Split.** The ticket is bigger than it looked. Narrow this ticket to the part that can ship on its own (amend it as in 1) and propose new tickets for the rest. Create them only on a yes, in the format `/ticket-flow:ticket` uses, with Status = Not started and the same Feature idea.
+3. **Stop.** The Goal itself is wrong. On a yes, set Status to Won't do, add the reason under `## Changes`, and suggest `/ticket-flow:spec` if the idea is still worth shaping. Leave the branch for the user to keep or delete.
+
+Rules for the check:
+
+- Never amend a ticket without the user's explicit yes and a written reason. Never loosen a Done when line just because the code does not meet it; that is a failed check, not drift.
+- A reworded line that means the same thing is not drift. Fix the wording and move on without a Changes entry.
+- If the cause was a wrong assumption in the linked spec, add a dated note under Open questions on the Feature idea page and tell the user which sibling tickets may share it. Do not edit those tickets.
