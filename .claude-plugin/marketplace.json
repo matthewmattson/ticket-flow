@@ -1,0 +1,12 @@
+{
+  "name": "ticket-flow",
+  "owner": { "name": "matthewmattson" },
+  "description": "A spec, ticket, start, ship workflow for Claude Code, backed by your own Notion databases.",
+  "plugins": [
+    {
+      "name": "ticket-flow",
+      "source": "./",
+      "description": "Shape ideas into specs, capture tickets, start them in a fresh session and ship them with a reviewed PR. Tickets live in your Notion workspace."
+    }
+  ]
+}
