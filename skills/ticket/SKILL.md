@@ -3,7 +3,6 @@ name: ticket
 description: Capture a feature, bug or chore found during this session as a ticket in the Notion Tickets database, in Triage. Only runs when the user types /ticket-flow:ticket.
 argument-hint: "[what you noticed, e.g. crash saving a draft with no title] [optional: sprint]"
 disable-model-invocation: true
-allowed-tools: Bash(git branch --show-current), Bash(git rev-parse *), Bash(git status *), Bash(git log *)
 ---
 
 # /ticket: capture work without leaving the session
